@@ -43,7 +43,37 @@ summary(control_group)
 # Summary statistics for experimental group
 summary(experimental_group)
 
+# Calculate mean, median, and standard deviation for Pre- and Post-Treatment scores by group
+control_stats <- control_group %>%
+  summarise(
+    Mean_Pre = mean(Pre_Treatment_Score, na.rm = TRUE),
+    Median_Pre = median(Pre_Treatment_Score, na.rm = TRUE),
+    SD_Pre = sd(Pre_Treatment_Score, na.rm = TRUE),
+    Mean_Post = mean(Post_Treatment_Score, na.rm = TRUE),
+    Median_Post = median(Post_Treatment_Score, na.rm = TRUE),
+    SD_Post = sd(Post_Treatment_Score, na.rm = TRUE)
+  )
+
+experimental_stats <- experimental_group %>%
+  summarise(
+    Mean_Pre = mean(Pre_Treatment_Score, na.rm = TRUE),
+    Median_Pre = median(Pre_Treatment_Score, na.rm = TRUE),
+    SD_Pre = sd(Pre_Treatment_Score, na.rm = TRUE),
+    Mean_Post = mean(Post_Treatment_Score, na.rm = TRUE),
+    Median_Post = median(Post_Treatment_Score, na.rm = TRUE),
+    SD_Post = sd(Post_Treatment_Score, na.rm = TRUE)
+  )
+
+# Combine the statistics into one table for better presentation
+group_stats <- bind_rows(
+  control_stats %>% mutate(Group = "Control (CBT)"),
+  experimental_stats %>% mutate(Group = "Experimental (VR)")
+)
+
+
 # DATA VISUALIZATION
+
+# Boxplots
 
 # Boxplot for Pre-treatment scores
 ggplot(participants_data_final_1_, aes(x = Group, y = Pre_Treatment_Score)) +
@@ -53,6 +83,8 @@ ggplot(participants_data_final_1_, aes(x = Group, y = Pre_Treatment_Score)) +
 ggplot(participants_data_final_1_, aes(x = Group, y = Post_Treatment_Score)) +
   geom_boxplot() + labs(title = "Post-treatment Scores by Group", x = "Group", y = "Post-treatment Score")
   
+# Histograms
+
 # Histogram for Pre-treatment scores
 ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill = Group)) +
   geom_histogram(position = "dodge", bins = 30, alpha = 0.7) + labs(title = "Histogram of Pre-treatment Scores", x = "Pre-treatment Score", y = "Count")
@@ -61,7 +93,7 @@ ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill = Group)) +
 ggplot(participants_data_final_1_, aes(x = Post_Treatment_Score, fill = Group)) +
   geom_histogram(position = "dodge", bins = 30, alpha = 0.7) + labs(title = "Histogram of Post-treatment Scores", x = "Post-treatment Score", y = "Count")
   
-# Bar Chart
+# Bar Charts
 
 # Data Manipulation for plotting
 average_scores <- participants_data_final_1_ %>%
@@ -76,5 +108,70 @@ ggplot(average_scores, aes(x = Treatment_Phase, y = Average_Score, fill = Group)
        y = "Average Score") +
   theme_minimal()
 
-  
+# Line graphs
+
+# Create a line graph showing Pre- and Post-Treatment scores for each group
+ggplot(average_scores, aes(x = Treatment_Phase, y = Average_Score, group = Group, color = Group)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  labs(title = "Average Scores by Group Over Treatment Phases", x = "Treatment Phase", y = "Average Score") +
+  theme_minimal()
+
+# Scatter plots
+
+# Create scatter plots to explore relationships between Pre- and Post-Treatment scores
+ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, y = Post_Treatment_Score, color = Group)) +
+  geom_point(size = 3, alpha = 0.7) +
+  labs(title = "Scatter Plot of Pre- vs Post-Treatment Scores", x = "Pre-Treatment Score", y = "Post-Treatment Score") +
+  theme_minimal()
+
+# Confidence Interval
+
+# Create Confidence Interval (CI) plots for Pre- and Post-Treatment scores
+ci_data <- participants_data_final_1_ %>%
+  pivot_longer(cols = c(Pre_Treatment_Score, Post_Treatment_Score), names_to = "Treatment_Phase", values_to = "Score") %>%
+  group_by(Group, Treatment_Phase) %>%
+  summarise(
+    Mean_Score = mean(Score, na.rm = TRUE),
+    SD_Score = sd(Score, na.rm = TRUE),
+    n = n(),
+    CI_Lower = Mean_Score - qt(0.975, df = n - 1) * SD_Score / sqrt(n),
+    CI_Upper = Mean_Score + qt(0.975, df = n - 1) * SD_Score / sqrt(n)
+  )
+
+ggplot(ci_data, aes(x = Treatment_Phase, y = Mean_Score, group = Group, color = Group)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = CI_Lower, ymax = CI_Upper), width = 0.2) +
+  labs(title = "Confidence Intervals for Scores by Group", x = "Treatment Phase", y = "Mean Score with 95% CI") +
+  theme_minimal()
+
+# QQ Plots
+
+# Create QQ plots for normality checks
+qqnorm(control_group$Pre_Treatment_Score, main = "QQ Plot - Control Group Pre-Treatment")
+qqline(control_group$Pre_Treatment_Score, col = "blue")
+
+qqnorm(control_group$Post_Treatment_Score, main = "QQ Plot - Control Group Post-Treatment")
+qqline(control_group$Post_Treatment_Score, col = "blue")
+
+qqnorm(experimental_group$Pre_Treatment_Score, main = "QQ Plot - Experimental Group Pre-Treatment")
+qqline(experimental_group$Pre_Treatment_Score, col = "red")
+
+qqnorm(experimental_group$Post_Treatment_Score, main = "QQ Plot - Experimental Group Post-Treatment")
+qqline(experimental_group$Post_Treatment_Score, col = "red")
+
+# Summary tables
+
+# Create summary tables for Pre- and Post-Treatment Scores
+summary_table <- participants_data_final_1_ %>%
+  group_by(Group) %>%
+  summarise(
+    Mean_Pre = mean(Pre_Treatment_Score, na.rm = TRUE),
+    SD_Pre = sd(Pre_Treatment_Score, na.rm = TRUE),
+    Mean_Post = mean(Post_Treatment_Score, na.rm = TRUE),
+    SD_Post = sd(Post_Treatment_Score, na.rm = TRUE)
+  )
+summary_table
+
   
