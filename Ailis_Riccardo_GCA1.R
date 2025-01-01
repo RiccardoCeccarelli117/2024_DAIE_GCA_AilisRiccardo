@@ -70,6 +70,9 @@ group_stats <- bind_rows(
   experimental_stats %>% mutate(Group = "Experimental (VR)")
 )
 
+print(control_stats)
+print(experimental_stats)
+print(group_stats)
 
 # DATA VISUALIZATION
 
@@ -174,4 +177,10 @@ summary_table <- participants_data_final_1_ %>%
   )
 summary_table
 
-  
+# Statistical testing (t-test), to perform on the post-treatment scores 
+
+control_scores <- c(control_group)
+experimental_scores <- c(experimental_group)
+
+t_test_result <- t.test(control_scores, experimental_scores)
+print(t_test_result)
