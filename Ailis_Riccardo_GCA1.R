@@ -182,5 +182,19 @@ summary_table
 control_scores <- c(control_group)
 experimental_scores <- c(experimental_group)
 
+# Set scores as numeric
+control_scores <- as.numeric(as.character(control_scores))
+experimental_scores <- as.numeric(as.character(experimental_scores))
+
+# Omit any NA value
+sum(is.na(control_scores))
+sum(is.na(experimental_scores))
+control_scores <- na.omit(control_scores)
+experimental_scores <- na.omit(experimental_scores)
+
+
 t_test_result <- t.test(control_scores, experimental_scores)
 print(t_test_result)
+
+control_group <- as.numeric(as.character(control_group))
+experimental_group <- as.numeric(as.character(experimental_group))
