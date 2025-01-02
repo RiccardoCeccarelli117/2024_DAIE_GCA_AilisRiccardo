@@ -1,18 +1,147 @@
-# BE SURE TO READ COMMENTS
+---
+title: "Comparative Analysis of VR Therapy and CBT for Depression Treatment"
+author: "[Ailis O'Connor, Riccardo Cecarelli]"
+date: "`r Sys.Date()`"
+output: html_document
+---
+  
+# Doesn't display the code in the output
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
-# Check the structure of the dataset
+# Table of Contents
+
+1. [Abstract] 
+
+2. [Introduction]
+
+3. [Method]
+
+4. [Results]
+
+5. [Discussion] 
+
+6. [References]
+            
+# Abstract {#abstract}
+            
+    ### Aim and Rationale
+    - This study evaluates the effectiveness of Virtual Reality (VR) therapy compared to traditional 
+      Cognitive Behavioural Therapy (CBT) in reducing depression symptoms.
+            
+    ### Participants and Setting
+    - A total of 200 participants aged 18–40 were randomly assigned to either a control group receiving traditional CBT or
+    an experimental group receiving VR therapy.
+            
+    ### Experiment Design
+    - Depression levels were measured using the Zung Self-Rating Depression Scale (SDS) at the start and end of a 12-week
+      treatment period. 
+            
+    ### Results Gathering
+    - Statistical analyses, including independent and paired t-tests, were conducted to compare changes in depression scores
+      between the two groups.
+            
+    ### Findings/Implications
+    - The findings suggest that VR therapy demonstrated a greater reduction in symptoms, highlighting the evolving role
+      of immersive technologies in mental health interventions. 
+            
+# Introduction {#introduction}
+            
+    ### Topic and Context
+    - Depression is one of the most prevalent mental health disorders worldwide. Traditional treatment approaches,
+      such as Cognitive Behavioural Therapy (CBT), have demonstrated efficacy in managing depressive symptoms.
+            
+    ### Theoretical Framework
+    - Advancements in technology have opened new avenues for therapy delivery, including Virtual Reality (VR)-based interventions.
+            
+    ### Rationale
+    - VR therapy provides interactive, simulated environments that can be tailored to the patients needs. 
+    These environments enable exposure therapy, stress management, and mood enhancement in ways that traditional methods cannot replicate. 
+            
+    ### Hypothesis
+    - The hypothesis is that VR therapy will lead to a significantly greater reduction in depression scores compared to CBT.
+            
+# Method {#method}
+            
+    ### Participants
+    - 200 participants, 95 males and 105 females, aged between 18 and 40 years;
+      two groups (100 participants each), traditional CBT and Experimental VR-based therapy.
+            
+    ### Design
+    - Randondomized controlled design, depression in clinic patients; 
+      Zung Self-Rating Depression Scale (SDS) at the start and end of a 12-week treatment period. 
+            
+    ### Materials
+    - Zung SDS, A 20-item questionnaire measuring depression severity, 4-point Likert scale (1 Low 4 High) with scores from 20 to 80;
+      VR Equipment, custom immersive environments with therapeutic interventions;
+      CBT Sessions, defined protocol.
+            
+    ### Procedure
+    - 12 weekly therapy sessions, each lasting 50 minutes.
+      VR: VR application designed to simulate therapeutic environments;
+      CBT: cognitive restructuring and behavioral activation techniques.
+      Zung SDS performed at the beginning and the end of the 12-week period.
+      
+            
+# Results {#results}
+            
+    ### Descriptive Statistics (run lines 162 to 191)
+    - For the control group (CBT), the average pre-treatment score was 60.0 (SD = 7.11), which decreased to an 
+      average post-treatment score of 50.0. 
+      Similarly, the experimental group (VR) showed an average pre-treatment score of 55.0 (SD = 7.11), 
+      decreasing to 45.0 post-treatment.
+            
+    ### Inferential Statistics (run lines 254 to 273 & 303 to 315)
+    - To determine the significance of observed changes in post treatment scores. 
+      T-tests, both independent on post-treatment scores and paired on pre/post scores.
+      Confidence intervals to futher confirm the reliability of the observed results.
+            
+    ### Statistical Tests (run lines 206 to 255 & 278 to 304)
+    - Also, various plots were utilized to properly visualize the behavior of the two groups:
+        - Box plots, histograms, bar charts, line graphs, scatterplots, QQ plots.
+      
+            
+    ### Magnitude and Direction of Results
+    - While both groups showcased improvement, VR patients showed a slightly greater improvement. 
+      In particular, looking at the graph and plots, the reduced spread of the post-treatment scores 
+      in the experimental patients also suggests a more consistent improvement pattern in the patients undergoing the VR treatment. 
+            
+# Discussion {#discussion}
+            
+    ### Findings and Relation to the Hypothesis
+    - Interpret findings and discuss whether they support or refute the hypothesis.
+            
+    ### Limitations
+    - Discuss any limitations, confounding variables, or methodological constraints.
+            
+# References {#references}
+            
+    - The references used are the class recordings and two video resources on the usage of R studio:
+        - ['Learn R in 39 minutes'] https://youtu.be/yZ0bV2Afkjc?si=tq8SnzY0w-2tXR6A
+        - ['GitHub without the fancy command line stuff: Connecting GitHub and R Studio with GitHub Desktop'] https://youtu.be/GeUzVSJ4glY?si=jZ_26u8l9058HF1A
+            
+---
+              
+# Appendix: Full R Code
+ 
+data <- read.csv("participants_data_final_1_.csv")
+
+# Check for need to clean data
+
+  ### Check the structure of the dataset
 str(participants_data_final_1_)  
 
-# Get summary statistics
+  ### Get summary statistics
 summary(participants_data_final_1_)  
 
-# Count missing values in each column
+  ### Count missing values in each column
 colSums(is.na(participants_data_final_1_));
 
-# Remove duplicate rows
+  ### Remove duplicate rows
 participants_data_final_1_ <- participants_data_final_1_[!duplicated(participants_data_final_1_), ];
 
-# Convert Group and Gender to factors to check data types
+  ### Convert Group and Gender to factors to check data types
 participants_data_final_1_$Group <- as.factor(participants_data_final_1_$Group)
 participants_data_final_1_$Gender <- as.factor(participants_data_final_1_$Gender)
 
@@ -24,9 +153,9 @@ boxplot(participants_data_final_1_$Post_Treatment_Score, main = "Boxplot of Post
 # Exploratory Data Analysis (EDA)
 
 # If first run, be sure to uncomment these two install, as the packages are required for data manipulation and visualization
-# install.packages("dplyr")
-# install.packages("ggplot2")
-# install.packages("tidyr")
+  ### install.packages("dplyr")
+  ### install.packages("ggplot2")
+  ### install.packages("tidyr")
 
 library(dplyr)
 library(ggplot2)
@@ -78,33 +207,33 @@ print(group_stats)
 
 # Boxplots
 
-# Boxplot for Pre-treatment scores
+  ### Boxplot for Pre-treatment scores
 ggplot(participants_data_final_1_, aes(x = Group, y = Pre_Treatment_Score)) +
   geom_boxplot() + labs(title = "Pre-treatment Scores by Group", x = "Group", y = "Pre-treatment Score")
 
-# Boxplot for Post-treatment scores
+  ### Boxplot for Post-treatment scores
 ggplot(participants_data_final_1_, aes(x = Group, y = Post_Treatment_Score)) +
   geom_boxplot() + labs(title = "Post-treatment Scores by Group", x = "Group", y = "Post-treatment Score")
 
 # Histograms
 
-# Histogram for Pre-treatment scores
+  ### Histogram for Pre-treatment scores
 ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill = Group)) +
   geom_histogram(position = "dodge", bins = 30, alpha = 0.7) + labs(title = "Histogram of Pre-treatment Scores", x = "Pre-treatment Score", y = "Count")
 
-# Histogram for Post-treatment scores
+  ### Histogram for Post-treatment scores
 ggplot(participants_data_final_1_, aes(x = Post_Treatment_Score, fill = Group)) +
   geom_histogram(position = "dodge", bins = 30, alpha = 0.7) + labs(title = "Histogram of Post-treatment Scores", x = "Post-treatment Score", y = "Count")
 
 # Bar Charts
 
-# Data Manipulation for plotting
+  ### Data Manipulation for plotting
 average_scores <- participants_data_final_1_ %>%
   pivot_longer(cols = c(Pre_Treatment_Score, Post_Treatment_Score), names_to = "Treatment_Phase", values_to = "Score") %>%
   group_by(Group, Treatment_Phase) %>%
   summarise(Average_Score = mean(Score, na.rm = TRUE))
 
-# Chart Creation
+  ### Chart Creation
 ggplot(average_scores, aes(x = Treatment_Phase, y = Average_Score, fill = Group)) +
   geom_bar(stat = "identity", position = "dodge") + labs(title = "Average Scores by Group and Treatment Phase", 
                                                          x = "Treatment Phase", 
@@ -113,7 +242,7 @@ ggplot(average_scores, aes(x = Treatment_Phase, y = Average_Score, fill = Group)
 
 # Line graphs
 
-# Create a line graph showing Pre- and Post-Treatment scores for each group
+  ### Create a line graph showing Pre- and Post-Treatment scores for each group
 ggplot(average_scores, aes(x = Treatment_Phase, y = Average_Score, group = Group, color = Group)) +
   geom_line(size = 1.2) +
   geom_point(size = 3) +
@@ -122,7 +251,7 @@ ggplot(average_scores, aes(x = Treatment_Phase, y = Average_Score, group = Group
 
 # Scatter plots
 
-# Create scatter plots to explore relationships between Pre- and Post-Treatment scores
+  ### Create scatter plots to explore relationships between Pre- and Post-Treatment scores
 ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, y = Post_Treatment_Score, color = Group)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "Scatter Plot of Pre- vs Post-Treatment Scores", x = "Pre-Treatment Score", y = "Post-Treatment Score") +
@@ -130,7 +259,7 @@ ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, y = Post_Treatme
 
 # Confidence Interval
 
-# Create Confidence Interval (CI) plots for Pre- and Post-Treatment scores
+  ### Create Confidence Interval (CI) plots for Pre- and Post-Treatment scores
 ci_data <- participants_data_final_1_ %>%
   pivot_longer(cols = c(Pre_Treatment_Score, Post_Treatment_Score), names_to = "Treatment_Phase", values_to = "Score") %>%
   group_by(Group, Treatment_Phase) %>%
@@ -151,7 +280,7 @@ ggplot(ci_data, aes(x = Treatment_Phase, y = Mean_Score, group = Group, color = 
 
 # QQ Plots
 
-# Create QQ plots for normality checks
+  ### Create QQ plots for normality checks
 qqnorm(control_group$Pre_Treatment_Score, main = "QQ Plot - Control Group Pre-Treatment")
 qqline(control_group$Pre_Treatment_Score, col = "blue")
 
@@ -166,7 +295,7 @@ qqline(experimental_group$Post_Treatment_Score, col = "red")
 
 # Summary tables
 
-# Create summary tables for Pre- and Post-Treatment Scores
+  ### Create summary tables for Pre- and Post-Treatment Scores
 summary_table <- participants_data_final_1_ %>%
   group_by(Group) %>%
   summarise(
@@ -179,14 +308,14 @@ summary_table
 
 # Inferential statistic testing (t-test), to perform on the post-treatment scores 
 
-# Extract numeric vectors for Post-Treatment scores from each group
+  ### Extract numeric vectors for Post-Treatment scores from each group
 control_scores <- control_group$Post_Treatment_Score
 experimental_scores <- experimental_group$Post_Treatment_Score
 
-# Perform the t-test on Post-Treatment scores
+  ### Perform the t-test on Post-Treatment scores
 t_test_result <- t.test(control_scores, experimental_scores, 
                         alternative = "two.sided", 
                         var.equal = TRUE)  # Assuming equal variances; set to FALSE if not
 
-# Print the t-test result
+  ### Print the t-test result
 print(t_test_result)
