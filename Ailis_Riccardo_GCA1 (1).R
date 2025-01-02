@@ -85,7 +85,7 @@ ggplot(participants_data_final_1_, aes(x = Group, y = Pre_Treatment_Score)) +
 # Boxplot for Post-treatment scores
 ggplot(participants_data_final_1_, aes(x = Group, y = Post_Treatment_Score)) +
   geom_boxplot() + labs(title = "Post-treatment Scores by Group", x = "Group", y = "Post-treatment Score")
-
+  
 # Histograms
 
 # Histogram for Pre-treatment scores
@@ -95,7 +95,7 @@ ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill = Group)) +
 # Histogram for Post-treatment scores
 ggplot(participants_data_final_1_, aes(x = Post_Treatment_Score, fill = Group)) +
   geom_histogram(position = "dodge", bins = 30, alpha = 0.7) + labs(title = "Histogram of Post-treatment Scores", x = "Post-treatment Score", y = "Count")
-
+  
 # Bar Charts
 
 # Data Manipulation for plotting
@@ -107,8 +107,8 @@ average_scores <- participants_data_final_1_ %>%
 # Chart Creation
 ggplot(average_scores, aes(x = Treatment_Phase, y = Average_Score, fill = Group)) +
   geom_bar(stat = "identity", position = "dodge") + labs(title = "Average Scores by Group and Treatment Phase", 
-                                                         x = "Treatment Phase", 
-                                                         y = "Average Score") +
+       x = "Treatment Phase", 
+       y = "Average Score") +
   theme_minimal()
 
 # Line graphs
@@ -177,7 +177,7 @@ summary_table <- participants_data_final_1_ %>%
   )
 summary_table
 
-# Inferential statistic testing (t-test), to perform on the post-treatment scores 
+# Statistical testing (t-test), to perform on the post-treatment scores 
 
 # Extract numeric vectors for Post-Treatment scores from each group
 control_scores <- control_group$Post_Treatment_Score
@@ -190,3 +190,4 @@ t_test_result <- t.test(control_scores, experimental_scores,
 
 # Print the t-test result
 print(t_test_result)
+
