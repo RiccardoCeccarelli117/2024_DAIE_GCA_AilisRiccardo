@@ -1,14 +1,13 @@
 ---
 title: "Comparative Analysis of VR Therapy and CBT for Depression Treatment"
 author: "[Ailis O'Connor, Riccardo Cecarelli]"
-date: "`r Sys.Date()`"
+date: "03/01/2024"
 output: html_document
 ---
   
 # Doesn't display the code in the output
   ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE)```
 
 # Table of Contents
 
