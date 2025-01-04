@@ -181,7 +181,7 @@ boxplot(participants_data_final_1_$Post_Treatment_Score, main = "Boxplot of Post
 
 # Exploratory Data Analysis (EDA)
 
-# If first run, be sure to uncomment these two install, as the packages are required for data manipulation and visualization
+# If first run, be sure to uncomment these three install, as the packages are required for data manipulation and visualization
 ### install.packages("dplyr")
 ### install.packages("ggplot2")
 ### install.packages("tidyr")
