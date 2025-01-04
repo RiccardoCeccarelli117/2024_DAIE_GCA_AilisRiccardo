@@ -12,7 +12,6 @@ output: html_document
 5. [Discussion](#discussion)
 6. [References](#references)
 
-
 # Abstract {#abstract}
 
 ### Aim and Rationale
@@ -155,7 +154,7 @@ in the experimental patients also suggests a more consistent improvement pattern
   
 # Appendix: Full R Code
   
-# data <- read.csv("participants_data_final_1_.csv") THIS LINE DOESN'T SEEM TO WORK IN RMD (it worked in R script)
+# data <- read.csv("participants_data_final_1_.csv") THIS LINE DOESN'T SEEM TO WORK IN Rmd (it worked in R script)
 
 # Check for need to clean data
 
