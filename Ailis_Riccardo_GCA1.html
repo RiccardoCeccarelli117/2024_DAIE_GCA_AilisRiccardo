@@ -498,7 +498,7 @@ post-treatment.</li>
 <ul>
 <li>To determine the significance of observed changes in post treatment
 scores. T-tests, both independent on post-treatment scores and paired on
-pre/post scores. Confidence intervals to futher confirm the reliability
+pre/post scores. Confidence intervals to further confirm the reliability
 of the observed results.</li>
 </ul>
 </div>
@@ -597,17 +597,19 @@ as.factor(participants_data_final_1_\)</span>Gender)</p>
 </div>
 <div id="create-boxplot-for-pre-treatment-scores" class="section level1">
 <h1>Create boxplot for Pre-treatment scores</h1>
-<p>boxplot(participants_data_final_1_<span class="math inline">\(Pre_Treatment_Score, main = &quot;Boxplot of
+</div>
+<div id="boxplotparticipants_data_final_1_pre_treatment_score-main-boxplot-of-pre-treatment-scores-create-boxplot-for-post-treatment-scores-boxplotparticipants_data_final_1_post_treatment_score-main-boxplot-of-post-treatment-scores" class="section level1">
+<h1>boxplot(participants_data_final_1_<span class="math inline">\(Pre_Treatment_Score, main = &quot;Boxplot of
 Pre-treatment Scores&quot;);
 # Create boxplot for Post-treatment scores
-boxplot(participants_data_final_1_\)</span>Post_Treatment_Score, main =
-“Boxplot of Post-treatment Scores”)</p>
+# boxplot(participants_data_final_1_\)</span>Post_Treatment_Score, main
+= “Boxplot of Post-treatment Scores”)</h1>
 </div>
 <div id="exploratory-data-analysis-eda" class="section level1">
 <h1>Exploratory Data Analysis (EDA)</h1>
 </div>
-<div id="if-first-run-be-sure-to-uncomment-these-two-install-as-the-packages-are-required-for-data-manipulation-and-visualization" class="section level1">
-<h1>If first run, be sure to uncomment these two install, as the
+<div id="if-first-run-be-sure-to-uncomment-these-three-install-as-the-packages-are-required-for-data-manipulation-and-visualization" class="section level1">
+<h1>If first run, be sure to uncomment these three install, as the
 packages are required for data manipulation and visualization</h1>
 <div id="install.packagesdplyr" class="section level3">
 <h3>install.packages(“dplyr”)</h3>
@@ -681,10 +683,17 @@ Scores by Group”, x = “Group”, y = “Post-treatment Score”)</p>
 <h1>Histograms</h1>
 <div id="histogram-for-pre-treatment-scores" class="section level3">
 <h3>Histogram for Pre-treatment scores</h3>
-<p>ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill
-= Group)) + geom_histogram(position = “dodge”, bins = 30, alpha = 0.7) +
-labs(title = “Histogram of Pre-treatment Scores”, x = “Pre-treatment
-Score”, y = “Count”)</p>
+</div>
+<div id="ggplotparticipants_data_final_1_-aesx-pre_treatment_score-fill-group" class="section level3">
+<h3>ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill
+= Group)) +</h3>
+</div>
+<div id="geom_histogramposition-dodge-bins-30-alpha-0.7-labstitle-histogram-of-pre-treatment-scores-x" class="section level3">
+<h3>geom_histogram(position = “dodge”, bins = 30, alpha = 0.7) +
+labs(title = “Histogram of Pre-treatment Scores”, x =</h3>
+</div>
+<div id="pre-treatment-score-y-count" class="section level3">
+<h3>“Pre-treatment Score”, y = “Count”)</h3>
 </div>
 <div id="histogram-for-post-treatment-scores" class="section level3">
 <h3>Histogram for Post-treatment scores</h3>
@@ -757,18 +766,29 @@ Phase”, y = “Mean Score with 95% CI”) + theme_minimal()</p>
 <h1>QQ Plots</h1>
 <div id="create-qq-plots-for-normality-checks" class="section level3">
 <h3>Create QQ plots for normality checks</h3>
-<p>qqnorm(control_group<span class="math inline">\(Pre_Treatment_Score,
+</div>
+<div id="qqnormcontrol_grouppre_treatment_score-main-qq-plot---control-group-pre-treatment-qqlinecontrol_grouppre_treatment_score-col-blue" class="section level3">
+<h3>qqnorm(control_group<span class="math inline">\(Pre_Treatment_Score,
 main = &quot;QQ Plot - Control Group Pre-Treatment&quot;)
-qqline(control_group\)</span>Pre_Treatment_Score, col = “blue”)</p>
-<p>qqnorm(control_group<span class="math inline">\(Post_Treatment_Score,
-main = &quot;QQ Plot - Control Group Post-Treatment&quot;)
-qqline(control_group\)</span>Post_Treatment_Score, col = “blue”)</p>
-<p>qqnorm(experimental_group<span class="math inline">\(Pre_Treatment_Score, main = &quot;QQ Plot -
+### qqline(control_group\)</span>Pre_Treatment_Score, col = “blue”)</h3>
+</div>
+<div id="qqnormcontrol_grouppost_treatment_score-main-qq-plot---control-group-post-treatment-qqlinecontrol_grouppost_treatment_score-col-blue" class="section level3">
+<h3>qqnorm(control_group<span class="math inline">\(Post_Treatment_Score, main = &quot;QQ Plot -
+Control Group Post-Treatment&quot;)
+### qqline(control_group\)</span>Post_Treatment_Score, col =
+“blue”)</h3>
+</div>
+<div id="qqnormexperimental_grouppre_treatment_score-main-qq-plot---experimental-group-pre-treatment-qqlineexperimental_grouppre_treatment_score-col-red" class="section level3">
+<h3>qqnorm(experimental_group<span class="math inline">\(Pre_Treatment_Score, main = &quot;QQ Plot -
 Experimental Group Pre-Treatment&quot;)
-qqline(experimental_group\)</span>Pre_Treatment_Score, col = “red”)</p>
-<p>qqnorm(experimental_group<span class="math inline">\(Post_Treatment_Score, main = &quot;QQ Plot -
+### qqline(experimental_group\)</span>Pre_Treatment_Score, col =
+“red”)</h3>
+</div>
+<div id="qqnormexperimental_grouppost_treatment_score-main-qq-plot---experimental-group-post-treatment-qqlineexperimental_grouppost_treatment_score-col-red" class="section level3">
+<h3>qqnorm(experimental_group<span class="math inline">\(Post_Treatment_Score, main = &quot;QQ Plot -
 Experimental Group Post-Treatment&quot;)
-qqline(experimental_group\)</span>Post_Treatment_Score, col = “red”)</p>
+### qqline(experimental_group\)</span>Post_Treatment_Score, col =
+“red”)</h3>
 </div>
 </div>
 <div id="summary-tables" class="section level1">

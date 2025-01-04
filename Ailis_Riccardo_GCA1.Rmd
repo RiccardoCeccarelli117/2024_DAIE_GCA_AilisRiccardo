@@ -111,14 +111,14 @@ decreasing to 45.0 post-treatment.
 
 - To determine the significance of observed changes in post treatment scores.
 T-tests, both independent on post-treatment scores and paired on pre/post scores.
-Confidence intervals to futher confirm the reliability of the observed results.
+Confidence intervals to further confirm the reliability of the observed results.
 
 
 ### Statistical Tests
 
 - Also, various plots were utilized to properly visualize the behavior of the two groups:
 
-- Box plots, histograms, bar charts, line graphs, scatterplots, QQ plots.
+- Box Plots, Bar Charts, Line Graphs, Scatterplots, Confidence Intervals.
 
 ### Magnitude and Direction of Results
 
@@ -157,7 +157,7 @@ in the experimental patients also suggests a more consistent improvement pattern
 # data <- read.csv("participants_data_final_1_.csv") THIS LINE DOESN'T SEEM TO WORK IN Rmd (it worked in R script)
 
 # Check for need to clean data
-
+```{r}
 ### Check the structure of the dataset
 str(participants_data_final_1_)  
 
@@ -173,11 +173,6 @@ participants_data_final_1_ <- participants_data_final_1_[!duplicated(participant
 ### Convert Group and Gender to factors to check data types
 participants_data_final_1_$Group <- as.factor(participants_data_final_1_$Group)
 participants_data_final_1_$Gender <- as.factor(participants_data_final_1_$Gender)
-
-# Create boxplot for Pre-treatment scores
-boxplot(participants_data_final_1_$Pre_Treatment_Score, main = "Boxplot of Pre-treatment Scores");
-# Create boxplot for Post-treatment scores
-boxplot(participants_data_final_1_$Post_Treatment_Score, main = "Boxplot of Post-treatment Scores")
 
 # Exploratory Data Analysis (EDA)
 
@@ -244,16 +239,6 @@ ggplot(participants_data_final_1_, aes(x = Group, y = Pre_Treatment_Score)) +
 ggplot(participants_data_final_1_, aes(x = Group, y = Post_Treatment_Score)) +
   geom_boxplot() + labs(title = "Post-treatment Scores by Group", x = "Group", y = "Post-treatment Score")
 
-# Histograms
-
-### Histogram for Pre-treatment scores
-ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill = Group)) +
-  geom_histogram(position = "dodge", bins = 30, alpha = 0.7) + labs(title = "Histogram of Pre-treatment Scores", x = "Pre-treatment Score", y = "Count")
-
-### Histogram for Post-treatment scores
-ggplot(participants_data_final_1_, aes(x = Post_Treatment_Score, fill = Group)) +
-  geom_histogram(position = "dodge", bins = 30, alpha = 0.7) + labs(title = "Histogram of Post-treatment Scores", x = "Post-treatment Score", y = "Count")
-
 # Bar Charts
 
 ### Data Manipulation for plotting
@@ -307,21 +292,6 @@ ggplot(ci_data, aes(x = Treatment_Phase, y = Mean_Score, group = Group, color = 
   labs(title = "Confidence Intervals for Scores by Group", x = "Treatment Phase", y = "Mean Score with 95% CI") +
   theme_minimal()
 
-# QQ Plots
-
-### Create QQ plots for normality checks
-qqnorm(control_group$Pre_Treatment_Score, main = "QQ Plot - Control Group Pre-Treatment")
-qqline(control_group$Pre_Treatment_Score, col = "blue")
-
-qqnorm(control_group$Post_Treatment_Score, main = "QQ Plot - Control Group Post-Treatment")
-qqline(control_group$Post_Treatment_Score, col = "blue")
-
-qqnorm(experimental_group$Pre_Treatment_Score, main = "QQ Plot - Experimental Group Pre-Treatment")
-qqline(experimental_group$Pre_Treatment_Score, col = "red")
-
-qqnorm(experimental_group$Post_Treatment_Score, main = "QQ Plot - Experimental Group Post-Treatment")
-qqline(experimental_group$Post_Treatment_Score, col = "red")
-
 # Summary tables
 
 ### Create summary tables for Pre- and Post-Treatment Scores
@@ -348,3 +318,4 @@ t_test_result <- t.test(control_scores, experimental_scores,
 
 ### Print the t-test result
 print(t_test_result)
+```
