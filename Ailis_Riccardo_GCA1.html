@@ -354,7 +354,7 @@ display: none;
 
 <p>title: “Comparative Analysis of VR Therapy and CBT for Depression
 Treatment” author: “[Ailis O’Connor, Riccardo Cecarelli]” date:
-“03/01/2024” output: html_document</p>
+“05/01/2024” output: html_document</p>
 <div id="table-of-contents" class="section level1">
 <h1>Table of Contents</h1>
 <ol style="list-style-type: decimal">
@@ -507,8 +507,8 @@ of the observed results.</li>
 <ul>
 <li><p>Also, various plots were utilized to properly visualize the
 behavior of the two groups:</p></li>
-<li><p>Box plots, histograms, bar charts, line graphs, scatterplots, QQ
-plots.</p></li>
+<li><p>Box Plots, Bar Charts, Line Graphs, Scatterplots, Confidence
+Intervals.</p></li>
 </ul>
 </div>
 <div id="magnitude-and-direction-of-results" class="section level3">
@@ -562,10 +562,15 @@ Connecting GitHub and R Studio with GitHub Desktop</em>. Available at:
 </div>
 <div id="appendix-full-r-code" class="section level1">
 <h1>Appendix: Full R Code</h1>
+<div id="note-the-data-.csv-was-named-participants_data_final_1_.csv-instead-of-the-downloadable-participants_data_final.csv.-if-the-latter-is-used-the-code-will-not-run-properly" class="section level3">
+<h3>NOTE: the data .csv was named “participants_data_final_1_.csv”,
+instead of the downloadable “participants_data_final.csv”. If the latter
+is used the code will not run properly</h3>
 </div>
-<div id="data---read.csvparticipants_data_final_1_.csv-this-line-doesnt-seem-to-work-in-rmd-it-worked-in-r-script" class="section level1">
-<h1>data &lt;- read.csv(“participants_data_final_1_.csv”) THIS LINE
-DOESN’T SEEM TO WORK IN Rmd (it worked in R script)</h1>
+<div id="note-2-please-run-the-code-by-manually-selecting-from-line-159-to-320.-we-tried-to-set-up-a-chunk-but-it-was-breaking-knitting" class="section level3">
+<h3>NOTE 2: please run the code by manually selecting from line 159 to
+320. We tried to set up a chunk but it was breaking knitting</h3>
+</div>
 </div>
 <div id="check-for-need-to-clean-data" class="section level1">
 <h1>Check for need to clean data</h1>
@@ -595,32 +600,22 @@ participants_data_final_1_<span class="math inline">\(Gender &lt;-
 as.factor(participants_data_final_1_\)</span>Gender)</p>
 </div>
 </div>
-<div id="create-boxplot-for-pre-treatment-scores" class="section level1">
-<h1>Create boxplot for Pre-treatment scores</h1>
-</div>
-<div id="boxplotparticipants_data_final_1_pre_treatment_score-main-boxplot-of-pre-treatment-scores-create-boxplot-for-post-treatment-scores-boxplotparticipants_data_final_1_post_treatment_score-main-boxplot-of-post-treatment-scores" class="section level1">
-<h1>boxplot(participants_data_final_1_<span class="math inline">\(Pre_Treatment_Score, main = &quot;Boxplot of
-Pre-treatment Scores&quot;);
-# Create boxplot for Post-treatment scores
-# boxplot(participants_data_final_1_\)</span>Post_Treatment_Score, main
-= “Boxplot of Post-treatment Scores”)</h1>
-</div>
 <div id="exploratory-data-analysis-eda" class="section level1">
 <h1>Exploratory Data Analysis (EDA)</h1>
+<div id="if-first-run-be-sure-to-uncomment-these-three-install-as-the-packages-are-required-for-data-manipulation-and-visualization" class="section level4">
+<h4>If first run, be sure to uncomment these three install, as the
+packages are required for data manipulation and visualization</h4>
 </div>
-<div id="if-first-run-be-sure-to-uncomment-these-three-install-as-the-packages-are-required-for-data-manipulation-and-visualization" class="section level1">
-<h1>If first run, be sure to uncomment these three install, as the
-packages are required for data manipulation and visualization</h1>
-<div id="install.packagesdplyr" class="section level3">
-<h3>install.packages(“dplyr”)</h3>
 </div>
-<div id="install.packagesggplot2" class="section level3">
-<h3>install.packages(“ggplot2”)</h3>
+<div id="install.packagesdplyr" class="section level1">
+<h1>install.packages(“dplyr”)</h1>
 </div>
-<div id="install.packagestidyr" class="section level3">
-<h3>install.packages(“tidyr”)</h3>
+<div id="install.packagesggplot2" class="section level1">
+<h1>install.packages(“ggplot2”)</h1>
+</div>
+<div id="install.packagestidyr" class="section level1">
+<h1>install.packages(“tidyr”)</h1>
 <p>library(dplyr) library(ggplot2) library(tidyr)</p>
-</div>
 </div>
 <div id="split-the-two-groups-into-control-and-experimental" class="section level1">
 <h1>Split the two groups into Control and Experimental</h1>
@@ -677,30 +672,6 @@ Scores by Group”, x = “Group”, y = “Pre-treatment Score”)</p>
 <p>ggplot(participants_data_final_1_, aes(x = Group, y =
 Post_Treatment_Score)) + geom_boxplot() + labs(title = “Post-treatment
 Scores by Group”, x = “Group”, y = “Post-treatment Score”)</p>
-</div>
-</div>
-<div id="histograms" class="section level1">
-<h1>Histograms</h1>
-<div id="histogram-for-pre-treatment-scores" class="section level3">
-<h3>Histogram for Pre-treatment scores</h3>
-</div>
-<div id="ggplotparticipants_data_final_1_-aesx-pre_treatment_score-fill-group" class="section level3">
-<h3>ggplot(participants_data_final_1_, aes(x = Pre_Treatment_Score, fill
-= Group)) +</h3>
-</div>
-<div id="geom_histogramposition-dodge-bins-30-alpha-0.7-labstitle-histogram-of-pre-treatment-scores-x" class="section level3">
-<h3>geom_histogram(position = “dodge”, bins = 30, alpha = 0.7) +
-labs(title = “Histogram of Pre-treatment Scores”, x =</h3>
-</div>
-<div id="pre-treatment-score-y-count" class="section level3">
-<h3>“Pre-treatment Score”, y = “Count”)</h3>
-</div>
-<div id="histogram-for-post-treatment-scores" class="section level3">
-<h3>Histogram for Post-treatment scores</h3>
-<p>ggplot(participants_data_final_1_, aes(x = Post_Treatment_Score, fill
-= Group)) + geom_histogram(position = “dodge”, bins = 30, alpha = 0.7) +
-labs(title = “Histogram of Post-treatment Scores”, x = “Post-treatment
-Score”, y = “Count”)</p>
 </div>
 </div>
 <div id="bar-charts" class="section level1">
@@ -760,35 +731,6 @@ Group, color = Group)) + geom_line(size = 1.2) + geom_point(size = 3) +
 geom_errorbar(aes(ymin = CI_Lower, ymax = CI_Upper), width = 0.2) +
 labs(title = “Confidence Intervals for Scores by Group”, x = “Treatment
 Phase”, y = “Mean Score with 95% CI”) + theme_minimal()</p>
-</div>
-</div>
-<div id="qq-plots" class="section level1">
-<h1>QQ Plots</h1>
-<div id="create-qq-plots-for-normality-checks" class="section level3">
-<h3>Create QQ plots for normality checks</h3>
-</div>
-<div id="qqnormcontrol_grouppre_treatment_score-main-qq-plot---control-group-pre-treatment-qqlinecontrol_grouppre_treatment_score-col-blue" class="section level3">
-<h3>qqnorm(control_group<span class="math inline">\(Pre_Treatment_Score,
-main = &quot;QQ Plot - Control Group Pre-Treatment&quot;)
-### qqline(control_group\)</span>Pre_Treatment_Score, col = “blue”)</h3>
-</div>
-<div id="qqnormcontrol_grouppost_treatment_score-main-qq-plot---control-group-post-treatment-qqlinecontrol_grouppost_treatment_score-col-blue" class="section level3">
-<h3>qqnorm(control_group<span class="math inline">\(Post_Treatment_Score, main = &quot;QQ Plot -
-Control Group Post-Treatment&quot;)
-### qqline(control_group\)</span>Post_Treatment_Score, col =
-“blue”)</h3>
-</div>
-<div id="qqnormexperimental_grouppre_treatment_score-main-qq-plot---experimental-group-pre-treatment-qqlineexperimental_grouppre_treatment_score-col-red" class="section level3">
-<h3>qqnorm(experimental_group<span class="math inline">\(Pre_Treatment_Score, main = &quot;QQ Plot -
-Experimental Group Pre-Treatment&quot;)
-### qqline(experimental_group\)</span>Pre_Treatment_Score, col =
-“red”)</h3>
-</div>
-<div id="qqnormexperimental_grouppost_treatment_score-main-qq-plot---experimental-group-post-treatment-qqlineexperimental_grouppost_treatment_score-col-red" class="section level3">
-<h3>qqnorm(experimental_group<span class="math inline">\(Post_Treatment_Score, main = &quot;QQ Plot -
-Experimental Group Post-Treatment&quot;)
-### qqline(experimental_group\)</span>Post_Treatment_Score, col =
-“red”)</h3>
 </div>
 </div>
 <div id="summary-tables" class="section level1">

@@ -150,16 +150,14 @@ in the experimental patients also suggests a more consistent improvement pattern
 4. Equitable Equations (2023) *Learn R in 39 minutes*. Available at: [https://youtu.be/yZ0bV2Afkjc?si=tq8SnzY0w-2tXR6A](https://youtu.be/yZ0bV2Afkjc?si=tq8SnzY0w-2tXR6A)
 5. Matt Birch (2023) *GitHub without the fancy command line stuff: Connecting GitHub and R Studio with GitHub Desktop*. Available at: [https://youtu.be/GeUzVSJ4glY?si=jZ_26u8l9058HF1A](https://youtu.be/GeUzVSJ4glY?si=jZ_26u8l9058HF1A)  
 
-
-  
 # Appendix: Full R Code
 
 ### NOTE: the data .csv was named "participants_data_final_1_.csv", instead of the downloadable "participants_data_final.csv". If the latter is used the code will not run properly
-  
-# data <- read.csv("participants_data_final_1_.csv") THIS LINE DOESN'T SEEM TO WORK IN Rmd (it worked in R script)
+
+### NOTE 2: please run the code by manually selecting from line 159 to 320. We tried to set up a chunk but it was breaking knitting
 
 # Check for need to clean data
-```{r}
+
 ### Check the structure of the dataset
 str(participants_data_final_1_)  
 
@@ -178,10 +176,10 @@ participants_data_final_1_$Gender <- as.factor(participants_data_final_1_$Gender
 
 # Exploratory Data Analysis (EDA)
 
-# If first run, be sure to uncomment these three install, as the packages are required for data manipulation and visualization
-### install.packages("dplyr")
-### install.packages("ggplot2")
-### install.packages("tidyr")
+#### If first run, be sure to uncomment these three install, as the packages are required for data manipulation and visualization
+# install.packages("dplyr")
+# install.packages("ggplot2") 
+# install.packages("tidyr")
 
 library(dplyr)
 library(ggplot2)
@@ -320,4 +318,3 @@ t_test_result <- t.test(control_scores, experimental_scores,
 
 ### Print the t-test result
 print(t_test_result)
-```
