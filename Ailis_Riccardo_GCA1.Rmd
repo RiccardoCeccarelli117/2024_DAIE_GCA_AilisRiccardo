@@ -1,6 +1,6 @@
 title: "Comparative Analysis of VR Therapy and CBT for Depression Treatment" 
 author: "[Ailis O'Connor, Riccardo Cecarelli]" 
-date: "04/01/2024" 
+date: "05/01/2024" 
 output: html_document
 
 # Table of Contents
@@ -153,6 +153,8 @@ in the experimental patients also suggests a more consistent improvement pattern
 
   
 # Appendix: Full R Code
+
+### NOTE: the data .csv was named "participants_data_final_1_.csv", instead of the downloadable "participants_data_final.csv". If the latter is used the code will not run properly
   
 # data <- read.csv("participants_data_final_1_.csv") THIS LINE DOESN'T SEEM TO WORK IN Rmd (it worked in R script)
 
